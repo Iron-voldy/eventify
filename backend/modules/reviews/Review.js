@@ -35,5 +35,6 @@ status: {
   enum: ['visible', 'hidden'],
   default: 'visible',
 },
+timestamps: true 
 
 });
