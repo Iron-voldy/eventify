@@ -132,3 +132,30 @@ exports.deleteReview = asyncHandler(async (req, res) => {
 
   res.json({ success: true, message: 'Review removed' });
 });
+
+// GET ALL REVIEWS (ADMIN)
+exports.getAllReviews = asyncHandler(async (req, res) => {
+  const reviews = await Review.find().sort('-reviewDate');
+
+  res.json({
+    success: true,
+    count: reviews.length,
+    data: reviews
+  });
+});
+
+// TOGGLE VISIBILITY
+exports.toggleReviewVisibility = asyncHandler(async (req, res) => {
+  const review = await Review.findById(req.params.id);
+
+  if (!review) {
+    res.status(404);
+    throw new Error('Review not found');
+  }
+
+  review.status = review.status === 'visible' ? 'hidden' : 'visible';
+
+  await review.save();
+
+  res.json({ success: true, data: review });
+});
