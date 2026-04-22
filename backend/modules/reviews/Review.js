@@ -21,4 +21,14 @@ comment: {
   required: [true, 'Comment is required'],
   maxlength: 1000,
 },
+
+reviewImage: {
+  type: String,
+  default: '',
+},
+reviewDate: {
+  type: Date,
+  default: Date.now,
+},
+
 });
