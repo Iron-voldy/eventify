@@ -6,6 +6,8 @@ require('dotenv').config();
 
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
+// Route imports
+const reviewRoutes = require('./modules/reviews/reviewRoutes');
 
 // Connect to database
 connectDB();
@@ -34,6 +36,9 @@ app.get('/api/health', (req, res) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// API Routes
+app.use('/api/reviews', reviewRoutes);
 
 // Error handler
 app.use(errorHandler);
