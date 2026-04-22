@@ -30,5 +30,10 @@ reviewDate: {
   type: Date,
   default: Date.now,
 },
+status: {
+  type: String,
+  enum: ['visible', 'hidden'],
+  default: 'visible',
+},
 
 });
