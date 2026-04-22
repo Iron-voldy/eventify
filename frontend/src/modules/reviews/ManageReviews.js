@@ -90,3 +90,48 @@ const renderItem = ({ item }) => {
   );
 };
 
+
+  const toggleVisibility = async (id, currentStatus) => {
+    const willHide = currentStatus === 'visible';
+    Alert.alert(
+      'Confirm Action',
+      `Are you sure you want to ${willHide ? 'hide' : 'show'} this review?`,
+      [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: willHide ? 'Hide' : 'Show',
+          style: 'default',
+          onPress: async () => {
+            try {
+              await reviewAPI.toggle(id);
+              setReviews(reviews.map(r =>
+                r._id === id ? { ...r, status: willHide ? 'hidden' : 'visible' } : r
+              ));
+            } catch (error) {
+              Alert.alert('Error', 'Could not update review status');
+            }
+          },
+        },
+      ]
+    );
+  };
+
+  const handleDelete = (id) => {
+    Alert.alert('Delete Review', 'Are you sure you want to permanently delete this review?', [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Delete',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            await reviewAPI.delete(id);
+            setReviews(reviews.filter(r => r._id !== id));
+          } catch (error) {
+            Alert.alert('Error', 'Could not delete review');
+          }
+        },
+      },
+    ]);
+  };
+
+
