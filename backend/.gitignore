@@ -1,39 +1,35 @@
-# dependencies
+# ENVIRONMENT VARIABLES
+.env
+.env.*
+.env.example
+
+
+# DEPENDENCIES
 node_modules/
 
-# Expo
-.expo/
+# LOGS
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# BUILD FILES
 dist/
-web-build/
-expo-env.d.ts
+build/
 
-# Native
-.kotlin/
-*.orig.*
-*.jks
-*.p8
-*.p12
-*.key
-*.mobileprovision
-
-# Metro
-.metro-health-check*
-
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# macOS
+# OS FILES
 .DS_Store
+Thumbs.db
+
+# EDITOR FILES
+.vscode/
+.idea/
+
+# CACHE / TEMP
+.cache/
+.tmp/
+
+# SECURITY
 *.pem
-
-# local env files
-.env*.local
-
-# typescript
-*.tsbuildinfo
-
-# generated native folders
-/ios
-/android
+*.key
