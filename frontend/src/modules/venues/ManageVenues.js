@@ -115,13 +115,18 @@ const ManageVenues = () => {
   };
 
   const handleSave = async () => {
-    if (!form.name || !form.address || !form.city || !form.capacity) {
-      Alert.alert('Error', 'Name, address, city and capacity are required.');
+    if (!form.name || !form.address || !form.city || !form.capacity || !form.contactPhone) {
+      Alert.alert('Error', 'Name, address, city, capacity and contact phone are required.');
       return;
     }
 
     if (isNaN(Number(form.capacity)) || Number(form.capacity) < 1) {
       Alert.alert('Error', 'Capacity must be a positive number.');
+      return;
+    }
+
+    if (form.contactEmail && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.contactEmail)) {
+      Alert.alert('Error', 'Please enter a valid email address.');
       return;
     }
 
