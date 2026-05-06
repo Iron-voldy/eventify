@@ -40,6 +40,7 @@ const Venues = ({ navigation, route }) => {
         const matchedVenue = venueList.find((venue) => venue._id === initialVenueId);
         if (matchedVenue) {
           handleSelectVenue(matchedVenue);
+          
         }
       }
     } catch (error) {
